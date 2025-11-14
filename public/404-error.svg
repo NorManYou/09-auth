@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="160" viewBox="0 0 320 160" aria-labelledby="title desc" role="img">
+    <title id="title">404 — Not found</title>
+    <desc id="desc">Простой маленький рисунок: документ с грустным лицом и крупные цифры 404.</desc>
+  
+    <!-- фон (прозрачный) -->
+    <!-- документ -->
+    <g transform="translate(20,12)">
+      <rect x="0" y="0" width="120" height="136" rx="8" ry="8" fill="#f6f7fb" stroke="#dfe7ff" stroke-width="2"/>
+      <!-- загнутый угол -->
+      <path d="M96 0 L120 24 L96 24 Z" fill="#e8ecff"/>
+      <!-- глаза -->
+      <circle cx="36" cy="56" r="6" fill="#7b84a8"/>
+      <circle cx="84" cy="56" r="6" fill="#7b84a8"/>
+      <!-- грустный рот -->
+      <path d="M40 84 C50 96 70 96 80 84" stroke="#7b84a8" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- полоски "текста" -->
+      <rect x="14" y="104" width="92" height="6" rx="3" fill="#e1e8ff"/>
+      <rect x="14" y="116" width="68" height="6" rx="3" fill="#e1e8ff"/>
+    </g>
+  
+    <!-- Большие цифры 404 -->
+    <g font-family="Segoe UI, Roboto, Arial, sans-serif" font-weight="700" fill="#2b3a67" text-anchor="middle">
+      <text x="220" y="68" font-size="52">4</text>
+      <text x="260" y="68" font-size="52">0</text>
+      <text x="300" y="68" font-size="52">4</text>
+    </g>
+  
+    <!-- подпись -->
+    <text x="170" y="120" font-family="Segoe UI, Roboto, Arial, sans-serif" font-size="12" fill="#6f7b99">
+    </text>
+  </svg>
+  
