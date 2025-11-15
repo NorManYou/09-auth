@@ -12,17 +12,24 @@ export const PAGINATION_CONFIG = {
 };
 
 //NOTE TAGS 
-export const NOTE_TAGS: NoteTag[] = [
+export const NOTES_PER_PAGE = 12;
+
+export const NOTE_TAGS = [
   "Work",
   "Personal",
   "Meeting",
   "Shopping",
   "Todo",
-];
+  "Ideas",
+  "Travel",
+  "Finance",
+  "Health",
+  "Important",
+] as const;
 
 //SITE METADATA
 export const SITE_NAME = "NoteHub";
-export const HOME_PAGE_URL = "https://08-zustand-three-theta.vercel.app/";
+export const HOME_PAGE_URL = "http://localhost:3000";
 
 export const OG_IMAGE = {
   url: "https://ac.goit.global/fullstack/react/notehub-og-meta.jpg",
