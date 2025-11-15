@@ -8,9 +8,9 @@ import Loader from '../Loader/Loader';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { validateForm, validationSchema } from './NoteForm-validation';
 import { useRouter } from 'next/navigation';
-import { useNoteDraftStore } from '@/lib/store/noteStore';
 import { createNote } from '@/lib/api/clientApi';
 import { NOTE_TAGS } from '@/constants';
+import { useNoteDraftStore } from '@/lib/store/noteStore';
 
 interface Errors {
     title?: string;
