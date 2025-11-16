@@ -1,8 +1,8 @@
 .headerNavbar {
     padding: 0;
-}
-
-.navigation {
+  }
+  
+  .navigation {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -10,28 +10,28 @@
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
-}
-
-.navigationItem {
+  }
+  
+  .navigationItem {
     display: flex;
     align-items: center;
-}
-
-.navigationLink {
+  }
+  
+  .navigationLink {
     text-decoration: none;
     color: white;
     font-size: 1rem;
-}
-
-.navigationLink:hover {
+  }
+  
+  .navigationLink:hover {
     color: #ddd;
-}
-
-.navbar-collapse {
+  }
+  
+  .navbar-collapse {
     display: block !important;
-}
-
-.smallToggler {
+  }
+  
+  .smallToggler {
     width: 28px;
     height: 28px;
     padding: 0;
@@ -40,16 +40,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.smallToggler:focus {
+  }
+  
+  .smallToggler:focus {
     outline: none;
     box-shadow: none;
-}
-
-.burger,
-.burger::before,
-.burger::after {
+  }
+  
+  .burger,
+  .burger::before,
+  .burger::after {
     content: "";
     display: block;
     width: 22px;
@@ -58,45 +58,45 @@
     transition: all 0.3s ease;
     border-radius: 2px;
     position: relative;
-}
-
-.burger::before,
-.burger::after {
+  }
+  
+  .burger::before,
+  .burger::after {
     position: absolute;
     left: 0;
-}
-
-.burger::before {
+  }
+  
+  .burger::before {
     top: -6px;
-}
-
-.burger::after {
+  }
+  
+  .burger::after {
     top: 6px;
-}
-
-.smallToggler[aria-expanded="true"] .burger {
+  }
+  
+  .smallToggler[aria-expanded="true"] .burger {
     background-color: transparent;
-}
-
-.smallToggler[aria-expanded="true"] .burger::before {
+  }
+  
+  .smallToggler[aria-expanded="true"] .burger::before {
     transform: rotate(45deg);
     top: 0;
-}
-
-.smallToggler[aria-expanded="true"] .burger::after {
+  }
+  
+  .smallToggler[aria-expanded="true"] .burger::after {
     transform: rotate(-45deg);
     top: 0;
-}
-
-@media (min-width: 992px) {
+  }
+  
+  @media (min-width: 992px) {
     .navbar-collapse {
-        display: flex !important;
+      display: flex !important;
     }
-}
-
-@media (max-width: 992px) {
+  }
+  
+  @media (max-width: 992px) {
     .navigation {
-        align-items: flex-start;
-        flex-direction: column;
+      align-items: flex-start;
+      flex-direction: column;
     }
-}
+  }

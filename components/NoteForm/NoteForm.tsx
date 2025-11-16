@@ -8,14 +8,14 @@ import Loader from '../Loader/Loader';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { validateForm, validationSchema } from './NoteForm-validation';
 import { useRouter } from 'next/navigation';
+import { useNoteDraftStore } from '@/lib/store/noteStore';
 import { createNote } from '@/lib/api/clientApi';
 import { NOTE_TAGS } from '@/constants';
-import { useNoteDraftStore } from '@/lib/store/noteStore';
 
 interface Errors {
-    title?: string;
-    content?: string;
-    tag?: string;
+    title?: string,
+    content?: string,
+    tag?: string
 }
 
 const initialErrors: Errors = {
@@ -37,7 +37,9 @@ export default function NoteForm() {
     const { mutate, isPending } = useMutation({
         mutationFn: (newNote: NewNoteData) => createNote(newNote),
         onSuccess() {
-            queryClient.invalidateQueries({ queryKey: ['notes'] });
+            queryClient.invalidateQueries({
+                queryKey: ['notes'],
+            });
             toast.success('Note created!');
             clearDraft();
             goBack();
@@ -46,6 +48,7 @@ export default function NoteForm() {
             toast.error('Failed to create note');
         },
     });
+
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
@@ -57,7 +60,8 @@ export default function NoteForm() {
             ...prev,
             [name]: fieldErrors[name as keyof NewNoteData] || '',
         }));
-    };
+    }
+
 
     const handleSubmit = (formData: FormData) => {
         const values = Object.fromEntries(formData) as unknown as NewNoteData;
@@ -66,23 +70,17 @@ export default function NoteForm() {
         if (Object.keys(errors).length > 0) return;
 
         mutate(values);
-    };
+    }
+
 
     return (
         <form className={css.form} action={handleSubmit}>
             <fieldset className={css.formGroup}>
                 <label htmlFor={`${fieldId}-title`}>Title</label>
-                <input
-                    id={`${fieldId}-title`}
-                    type="text"
-                    name="title"
-                    className={css.input}
-                    defaultValue={draft.title}
-                    onChange={handleChange}
-                />
+                <input id={`${fieldId}-title`} type="text" name="title"
+                    className={css.input} defaultValue={draft.title} onChange={handleChange} />
                 {formErrors?.title && <span className={css.error}>{formErrors.title}</span>}
             </fieldset>
-
             <fieldset className={css.formGroup}>
                 <label htmlFor={`${fieldId}-content`}>Content</label>
                 <textarea
@@ -95,30 +93,18 @@ export default function NoteForm() {
                 />
                 {formErrors?.content && <span className={css.error}>{formErrors.content}</span>}
             </fieldset>
-
             <fieldset className={css.formGroup}>
                 <label htmlFor={`${fieldId}-tag`}>Tag</label>
-                <select
-                    id={`${fieldId}-tag`}
-                    name="tag"
-                    className={css.select}
-                    defaultValue={draft.tag}
-                    onChange={handleChange}
-                >
-                    {NOTE_TAGS.map(tag => (
-                        <option key={tag} value={tag}>
-                            {tag}
-                        </option>
-                    ))}
+                <select id={`${fieldId}-tag`} name="tag" className={css.select} defaultValue={draft.tag} onChange={handleChange}>
+                    {NOTE_TAGS.map(noteTag => <option key={noteTag} value={noteTag}>{noteTag}</option>)}
                 </select>
                 {formErrors?.tag && <span className={css.error}>{formErrors.tag}</span>}
             </fieldset>
-
             <div className={css.actions}>
-                <button type="button" className={css.cancelButton} onClick={goBack}>
+                <button type="button" className={css.cancelButton} onClick={goBack
+                }>
                     Cancel
                 </button>
-
                 <button
                     type="submit"
                     className={css.submitButton}
@@ -126,9 +112,8 @@ export default function NoteForm() {
                 >
                     {isPending ? 'Creating...' : 'Create note'}
                 </button>
+                {isPending && < Loader isCreating />}
             </div>
-
-            {isPending && <Loader />}
         </form>
     );
 }

@@ -6,6 +6,7 @@ import { NOTES_PER_PAGE } from "@/constants";
 import { Note } from "@/types/note";
 import { CheckSessionRequest, FetchNotesResponse } from "./clientApi";
 
+//* NOTES =================================================
 // Requests
 export const fetchNotes = async (
   search: string,

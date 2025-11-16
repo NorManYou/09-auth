@@ -12,6 +12,7 @@ const Navbar = () => {
 
     const menuRef = useRef<HTMLDivElement | null>(null);
 
+    // Detect mobile mode on load and resize
     useEffect(() => {
         const check = () => setIsMobile(window.innerWidth < 992);
         check();
@@ -20,15 +21,16 @@ const Navbar = () => {
     }, []);
 
     const toggleMenu = () => {
-        if (!isMobile) return; 
+        if (!isMobile) return; // Desktop: ignore toggle
         setIsOpen(prev => !prev);
     };
 
     const closeMenu = () => {
-        if (!isMobile) return; 
+        if (!isMobile) return; // Desktop: ignore close
         setIsOpen(false);
     };
 
+    // Animate height only on mobile
     useEffect(() => {
         const el = menuRef.current;
         if (!el || !isMobile) {
@@ -37,7 +39,7 @@ const Navbar = () => {
         }
 
         if (isOpen) {
-
+            // Animate open
             el.style.height = "0px";
             const full = el.scrollHeight;
             requestAnimationFrame(() => {
@@ -45,11 +47,12 @@ const Navbar = () => {
             });
 
             const onEnd = () => {
-                el.style.height = "auto"; 
+                el.style.height = "auto"; // Reset after animation
                 el.removeEventListener("transitionend", onEnd);
             };
             el.addEventListener("transitionend", onEnd);
         } else {
+            // Animate close
             const full = el.scrollHeight;
             el.style.height = full + "px";
             requestAnimationFrame(() => {

@@ -1,20 +1,25 @@
-import React from "react";
-import css from "./Loader.module.css";
+import css from './Loader.module.css'
 
 interface LoaderProps {
-  isFullScreen?: boolean;
+    isCreating?: boolean;
+    isFullScreen?: boolean;
 }
 
-const Loader: React.FC<LoaderProps> = ({ isFullScreen = false }) => {
-  if (isFullScreen) {
+export default function Loader({ isCreating = false, isFullScreen = false }: LoaderProps) {
+
+    if (isFullScreen) {
+        return (
+            <div className={css.loaderContainerLg}>
+                <div className={css.loaderContainer}>
+                    <span className={isCreating ? `${css.loaderProgress}` : `${css.loader}`}></span>
+                </div>
+                <p>Loading...</p>
+            </div>)
+    }
+
     return (
-      <div className={css.loaderContainerLg}>
-        <div className={css.text}>Loading... wait a moment</div>
-      </div>
-    );
-  }
-
-  return <div className={css.text}>Loading... wait a moment</div>;
-};
-
-export default Loader;
+        <div className={css.loaderContainer}>
+            <span className={isCreating ? `${css.loaderProgress}` : `${css.loader}`}></span>
+        </div>
+    )
+}

@@ -3,6 +3,7 @@ import { nextServer } from "./api";
 import { User } from "@/types/user";
 import { NOTES_PER_PAGE } from "@/constants";
 
+//* NOTES =================================================
 // Interfaces
 export interface FetchNotesResponse {
   notes: Note[];
@@ -42,6 +43,7 @@ export const deleteNote = async (noteId: string): Promise<Note> => {
   return response.data;
 };
 
+//* USER =================================================
 // Interfaces
 export interface RegisterRequest {
   email: string;
